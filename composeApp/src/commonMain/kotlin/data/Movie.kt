@@ -12,12 +12,11 @@ data class Movie(
     val overview: String,
     @SerialName("vote_average") val rating: Double
 ) {
-    // This is a "Helper Brick" to create the full image URL
     val fullPosterUrl: String
         get() = "https://image.tmdb.org/t/p/w500$posterPath"
 }
 
 @Serializable
 data class MovieResponse(
-    val results: List<Movie>
+    val results: List<Movie> = emptyList()
 )

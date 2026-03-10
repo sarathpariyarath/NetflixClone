@@ -22,9 +22,10 @@ class MovieApi {
 
     suspend fun getTrendingMovies(): List<Movie> {
         val response: MovieResponse = httpClient.get("https://api.themoviedb.org/3/trending/movie/day") {
-            header("Authorization", accessToken)
+            // You MUST add "Bearer " before the token string
+            header("Authorization", "Bearer $accessToken")
             parameter("language", "en-US")
         }.body()
-        return  response.results
+        return response.results
     }
 }
